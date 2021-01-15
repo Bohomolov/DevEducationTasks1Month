@@ -164,21 +164,21 @@ public class Tasks {
     }
 
     //Task9
+    public final static String REGEX_FOR_HEX = "^\\p{XDigit}+$";
     public boolean isHex(String input) {
-        final Pattern REGEX_PATTERN = Pattern.compile("^\\p{XDigit}+$");
-        if (REGEX_PATTERN.matcher(input).matches()) {
-            return true;
-        } else {
-            return false;
+        if (input == null){
+            throw new IllegalArgumentException("Empty string.");
         }
+        final Pattern REGEX_PATTERN = Pattern.compile(REGEX_FOR_HEX);
+        return REGEX_PATTERN.matcher(input).matches();
     }
     //Task10
-    public final static String regexForPhoneNumber = "^(\\+\\d{1,4}( )?)?((\\(\\d{1,3}\\))( )\\d{3})(-)?\\d{2}(-)?\\d{2}$";
+    public final static String REGEX_FOR_PH_NUMBER = "^(\\+\\d{1,4}( )?)?((\\(\\d{1,3}\\))( )\\d{3})(-)?\\d{2}(-)?\\d{2}$";
     public boolean isPhoneNumber(String numb) {
         if (numb == null){
             throw new IllegalArgumentException("Empty string.");
         }
-        return numb.matches(regexForPhoneNumber);
+        return numb.matches(REGEX_FOR_PH_NUMBER);
     }
     //Task11
 }

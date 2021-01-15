@@ -68,7 +68,32 @@ class TasksTest {
     //Test on task7
     //Test on task8
     //Test on task9
+    //===============================================Task 9======================================
+    static Stream<Arguments> isHexTest() {
+        return Stream.of(
+                arguments("77",true),
+                arguments("FF",true),
+                arguments("0  111",false),
+                arguments("",false),
+                arguments("AA",true),
+                arguments("aasdadsa asd asd daaw",false),
+                arguments("55",true)
 
+        );
+    }
+
+    @ParameterizedTest(name = "Is hex. Input data is {0}, {1} ")
+    @MethodSource("isHexTest")
+    void isHexTest_0(String phoneNumber, boolean expected) {
+        boolean actual = tasks.isHex(phoneNumber);
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void isHexTest_exception() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            tasks.isHex(null);
+        }, "Empty string.");
+    }
     //===============================================Task 10======================================
     static Stream<Arguments> isItPhoneNumberTest() {
         return Stream.of(
